@@ -1,12 +1,18 @@
-<h1>List of Tasks</h1>
-<ul>
-  <% @tasks.each do |task| %>
-    <li>
-      <h3><%= link_to task.title, task_path(task) %></h3>
-      <p><%= task.details %></p>
-      <p><%= task.completed %></p>
-      <input type="checkbox" checked="<%= task.completed %>">
-    </li>
-  <% end %>
-  <p><%= link_to "Create a new Task", new_task_path %> </p>
-</ul>
+<div class="container">
+  <div class="row">
+    <h1>List of Tasks</h1>
+    <p> Here you will find your task and their actual status, you can also click on them to edit or delete them</p>
+    <ul class="list-group list-group-flush">
+      <% @tasks.each do |task| %>
+        <li class="list-group-item d-flex justify-content-left align-items-center">
+          <span class="px-3"><%= task.completed ? '<i class="fa-regular fa-square-check"></i>'.html_safe : '<i class="fa-regular fa-square"></i>'.html_safe %></span>
+          <p class="ml-3 my-auto">
+          <%= link_to task.title, task_path(task) %>
+          <%= " - " + task.details %>
+          </p>
+        </li>
+      <% end %>
+      <p><%= link_to '<i class="fa-solid fa-circle-plus"></i> Create a new Task'.html_safe, new_task_path, :class => "btn btn-primary m-2" %> </p>
+    </ul>
+  </div>
+</div>

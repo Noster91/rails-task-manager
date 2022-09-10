@@ -1,9 +1,21 @@
-<%= form_with model: @task do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :details %>
-  <%= f.text_field :details %>
-  <%= f.label :completed %>
-  <%= f.check_box :completed %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <h2>Edit a your Task</h2>
+  <p>Change the Title and Details of the task, and also mark if the task has been completed</p>
+  <div class="form-group">
+    <%= form_with model: @task do |f| %>
+      <div class="form-group row py-3">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+      <div class="form-group row py-3">
+        <%= f.label :details %>
+        <%= f.text_field :details, class: "form-control" %>
+      </div>
+      <div class="form-group py-3">
+        <%= f.label :completed, "Is task completed?" %>
+        <%= f.check_box :completed %>
+      </div>
+      <%= f.submit class: "btn btn-default btn-primary" %>
+    <% end %>
+  </div>
+</div>
